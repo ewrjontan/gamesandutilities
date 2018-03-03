@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+  		<title>Games and Utilities</title>	
+  		  <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+      	<link type = 'text/css' rel = 'stylesheet' href = 'stylesheet.css'/>
+  		  
+      	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+      	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="gamesandutilities.js"></script>
+  </head>
+
+  <body>
+    <div id="menu-select-container">
+      <div id="icon-container">
+        <div class="GameIcon" id="ttt-icon"></div> 
+        <div class="GameIcon" id="simon-icon"></div> 
+        <div class="GameIcon" id="calc-icon"></div> 
+      </div>
+      
+      <div id="game-button-container">
+        <div class="GameSelectButton" id="ttt-button">Tic Tac Toe</div>
+        <div class="GameSelectButton" id="simon-button">Simon</div>
+        <div class="GameSelectButton" id="calculator-button">Calculator</div>
+      </div>  
+    </div>  
+    
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxx Tic Tac Toe xxxxxxxxxxxxxxxxxxxxxx -->
+    
+    <div id="ttt-game-container">
+
+        <div id="ttt-game-select-container">
+          <h1 id="game-title">Tic Tac Toe</h1>
+
+          <div id="player-select-container">
+            <h3 class="player-option" id="single-player">Single Player</h3>
+            <h3 class="player-option" id="two-player">Two Player</h3>
+          </div>
+
+          <div id="character-container">
+            <div class="character" id="x-character">
+              X
+            </div>
+
+            <h3>or</h3>
+
+            <div class="character" id="o-character">
+              O
+            </div>
+          </div>
+        </div>
+
+        <div id="begin-container">
+          <h1 id="begin-text">Begin</h1>
+        </div>
+
+        <div id="end-container">
+          <h1 id="end-game-text">End Game</h1>
+        </div>
+
+        <div id="game-board">
+          <div id="turn-indicator-container">
+            <div class="player-turn" id="player-one-indicator">
+              P1
+            </div>
+            <div id="player-two-indicator"></div>
+          </div>
+
+          <div id="horizontal-line-container">
+            <div class="horizontal-line"></div>
+            <div class="horizontal-line"></div>
+          </div>
+
+          <div id="vertical-line-container">
+            <div class="vertical-line"></div>
+            <div class="vertical-line"></div>
+          </div>
+
+          <div id="zone-container">
+            <div class="zone" id="zone-one"><!--<div class="mark x-mark">X
+            </div>--></div>
+            <div class="zone" id="zone-two"><!--<div class="mark o-mark">O
+            </div>--></div>
+            <div class="zone" id="zone-three"></div>
+            <div class="zone" id="zone-four"></div>
+            <div class="zone" id="zone-five"></div>
+            <div class="zone" id="zone-six"></div>
+            <div class="zone" id="zone-seven"></div>
+            <div class="zone" id="zone-eight"></div>
+            <div class="zone" id="zone-nine"></div>
+          </div>  
+        </div>
+      </div>  
+    
+    <!-- xxxxxxxxxxxxxx Simon xxxxxxxxxxxxxxxxxxxx-->
+    
+    <div id="simon-game-container">
+    
+    <div class="SimonButton" id="red-button"></div>
+    <div class="SimonButton" id="blue-button"></div>
+    <div class="SimonButton" id="yellow-button"></div>
+    <div class="SimonButton" id="green-button"></div>
+   
+   <div id="center">
+     <div id="logo">Simon!</div>
+     
+     <div id="options-container">
+       <div id="count-container">
+         <div id="count-text"></div>
+       </div>
+       
+       <div id="start-container">
+         <div class="small-button" id="start-button"></div>
+         <div id="start-text">Start</div>
+       </div>
+       
+       <div id="strict-container">
+         <div id="strict-items">
+           <div id="strict-light"></div>
+           <div class="small-button" id="strict-button"></div>
+         </div>  
+         <div id="strict-text">Strict</div>
+       </div>
+     </div>
+     
+   </div>
+  </div>
+    
+      <!-- xxxxxxxxxxxxxx Calculator xxxxxxxxxxxxxxxxxxxx-->
+
+    <div id="calculator">
+      <div id="screen">
+        <p id="result"></p>
+        <p id="history"></p>
+      </div>
+      
+      <div class="button-row" id="row-one">
+        <div class="CalcButton" id="clear"><p>AC</p></div>
+        <div class="CalcButton" id=""><p>&#8678</p></div>
+        <div class="CalcButton" id=""><p>%</p></div>
+        <div class="CalcButton" id=""><p>/</p></div>
+      </div>
+      
+      <div class="button-row" id="row-two">
+        <div class="CalcButton" id=""><p>7</p></div>
+        <div class="CalcButton" id=""><p>8</p></div>
+        <div class="CalcButton" id=""><p>9</p></div>
+        <div class="CalcButton" id=""><p>*</p></div>
+      </div>
+      
+      <div class="button-row" id="row-three">
+        <div class="CalcButton" id=""><p>4</p></div>
+        <div class="CalcButton" id=""><p>5</p></div>
+        <div class="CalcButton" id=""><p>6</p></div>
+        <div class="CalcButton" id=""><p>-</p></div>
+      </div>
+      
+      <div class="button-row" id="row-four">
+        <div class="CalcButton" id=""><p>1</p></div>
+        <div class="CalcButton" id=""><p>2</p></div>
+        <div class="CalcButton" id=""><p>3</p></div>
+        <div class="CalcButton" id=""><p>+</p></div>
+      </div>
+      
+      <div class="button-row" id="row-five">
+        <div class="CalcButton" id="zero"><p>0</p></div>
+        <div class="CalcButton" id=""><p>.</p></div>
+        <div class="CalcButton" id="equals"><p>=</p></div>
+      </div>
+      
+    </div>
+    
+    
+  </body>
+</html>
