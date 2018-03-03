@@ -19,7 +19,7 @@ function resetEverything(){
     $tttOpen = false;
     $("#ttt-game-container").css("display", "none");
     document.getElementById("ttt-game-select-container").style.display = "inline"; 
-    document.getElementById("character-container").style.visibility = "hidden";
+    document.getElementById("character-container").style.display = "none";
     gameReset();
     
     //reset simon
