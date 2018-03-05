@@ -6,10 +6,6 @@ html, body{
 body{
   background: radial-gradient(circle, white, gray);
   background-repeat: no-repeat;
-  /*-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
   background-attachment: fixed;
 }
 
@@ -125,9 +121,6 @@ body{
   background-color: green;
   width: 300px;
   height: 300px;
-  /*position: absolute;
-  top: 25px;
-  left: 25px;*/
   position: absolute;
   left: 0;
   right: 0;
@@ -144,7 +137,6 @@ body{
   font-size: 4em;
   transition: opacity 1s;
   -webkit-transition: opacity 1s;
-  /*display: none;*/
 }
 
 #player-select-container{
@@ -196,7 +188,6 @@ body{
 #begin-container{
   position: absolute;
   top: 135px;
-  /*left: 25px;*/
   margin: auto;
   left: 0;
   right: 0;
@@ -217,11 +208,9 @@ body{
   width: 300px;
   text-align: center;
   top: 155px;
-  /*left: 25px;*/
   margin: auto;
   left: 0;
   right: 0;
-  /*display: none;*/
   opacity: 1;
   transition: opacity 5s;
   -webkit-transition: opacity 5s;
@@ -240,7 +229,6 @@ body{
   margin: auto;
   border: 25px solid #cc8800;
   border-radius: 10px;
-  /*z-index: -2;*/
   position: relative;
 }
 
@@ -301,7 +289,6 @@ body{
   width: 300px;
   height: 300px;
   background-color: none;
-  /*z-index: 2;*/
   position: absolute;
   top: 0;
   display: flex;
@@ -351,9 +338,8 @@ body{
 
 .SimonButton{
   width: 155px;
-	height: 155px;
+  height: 155px;
   position: absolute;
-  /*box-shadow: inset 0 0 5px 5px #333333;*/
   cursor: pointer;
   filter: brightness(80%);
 }
@@ -462,7 +448,6 @@ body{
 #start-button{
   background-color: red;
   margin-bottom: 5px;
-  /*box-shadow: inset 0px 0px 2px #660000;*/
 }
 
 #strict-container{
@@ -494,8 +479,6 @@ body{
 #strict-button{
   background-color: yellow;
   margin-bottom: 5px;
-  /*border: 1px solid yellow;*/
-  /*box-shadow: inset 0px 0px 2px #666600;*/
 }
 
 /* xxxxxxxxxxxxxxxxxxx CSS for Calculator xxxxxxxxxxxxxxx*/
@@ -533,7 +516,6 @@ body{
   font-size: 35px;
   position: relative;
   top: 0px;
-  /*top:15px//on my mac*/
   color: #898989;
   width: 98%;
   margin-left: auto;
@@ -612,7 +594,6 @@ body{
   #menu-select-container{
     flex-direction: column;
     background-color: none;
-
   }
 
   #icon-container{
