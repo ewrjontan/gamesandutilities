@@ -15,7 +15,6 @@ function resetEverything(){
     $(".GameIcon").removeClass("IconHighlight");
     
     //reset tic tac toe
-    console.log("resetting tic tac toe");
     $tttOpen = false;
     $("#ttt-game-container").css("display", "none");
     document.getElementById("ttt-game-select-container").style.display = "inline"; 
@@ -23,25 +22,25 @@ function resetEverything(){
     gameReset();
     
     //reset simon
-    console.log("resetting simon");
     $simonOpen = false;
     $("#simon-game-container").css("display", "none");
     document.getElementById("count-text").innerHTML = "";
     simonDisableClick = true;
 
     //reset calculator
-    console.log("resetting calculator");
     $calcOpen = false;
     $("#calculator").css("display", "none");
     clearCalculator();
 }
 
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxx Jquery for main xxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 $(document).ready(function(){
-  console.log("yo");
 
   //adds HasHover class to body to allow for hovering over elements
   if (!hasTouch()) {
-    console.log("Not a touch screen, adding hover class!");
+    //console.log("Not a touch screen, adding hover class!");
       $("body").addClass("HasHover");
   }
   
@@ -125,19 +124,19 @@ $(document).ready(function(){
     $calcOpen = true; 
   });
  
-
-
   //for button hovers xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   $(".GameIcon").mouseover(function(){
     if ($("body").hasClass("HasHover") && $gameSelectMenu==false){
-      console.log("Body has hover class, allowing hover!");
       $(this).effect("shake", {distance: 5}, 250);
     };    
   })
 
 });
 
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //xxxxxxxxxxxxx JS for tic tac toe xxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 var gameTitleTimer;
 var beginTimer;
 var cpuTimer;
@@ -162,7 +161,7 @@ var zoneObjArr = {"zone-one": false, "zone-two": false, "zone-three": false, "zo
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //functionsxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 function cpuMove(){
-  console.log("cpu is thinking");
+  //console.log("cpu is thinking");
   var zoneOne = zoneObjArr["zone-one"];
   var zoneTwo = zoneObjArr["zone-two"];
   var zoneThree = zoneObjArr["zone-three"];
@@ -175,6 +174,7 @@ function cpuMove(){
   var cpuRepeat = false;
   clearTimeout(cpuTimer);
   
+  //Determine Move for CPU  
   if (zoneFive == false){
     zoneClick("zone-five");
   }else if (zoneOne == playerOneMark && zoneTwo ==playerOneMark && zoneThree == false){
@@ -219,9 +219,9 @@ function cpuMove(){
     zoneClick("zone-seven");
   }else{//pick a random spot
     var randomNumber = Math.floor(Math.random() * 9);
-    console.log(randomNumber);
+    //console.log(randomNumber);
     var tempCpuZone = zoneArr[randomNumber];
-    console.log("tempCpuZone: " + tempCpuZone);
+    //console.log("tempCpuZone: " + tempCpuZone);
     
     //check if zone is empty
     if (zoneObjArr[tempCpuZone] == false){
@@ -233,6 +233,7 @@ function cpuMove(){
     
   };
   
+  //if CPU picks a used spot...re-pick  
   if (cpuRepeat == false){
     playerTwoTurn = false;
     playerOneTurn = true;
@@ -253,8 +254,6 @@ function gameReset(){
     zoneObjArr[zone] = false;
   });
   
-  //document.getElementById("end-game-text").innerHTML = "Play Again?";
-  
   document.getElementById("ttt-game-select-container").style.transform = "scale(1, 1)";
   
   document.getElementById("game-title").style.visibility = "visible";  
@@ -263,19 +262,6 @@ function gameReset(){
   document.getElementById("player-select-container").style.opacity = "1";
   document.getElementById("end-container").style.visibility = "hidden";
   
-  
-  //document.getElementById("end-container").style.opacity = "1";
-  
-  /*document.getElementById("character-container").style.visibility = "visible";
-  document.getElementById("character-container").style.opacity = "1"; */
-  
-  /*$("#game-select-container").css("transform", "scale(1,.2)")
-    $("#character-container").css("opacity", "0");
-    $("#begin-container").css("visibility", "visible");
-    $("#begin-container").css("opacity", "1");*/
-    
-  //singlePlayer = false;
-  //twoPlayer = false;    
   playerOneMark = "";
   playerTwoMark = "";
   cpuMark = "";
@@ -287,8 +273,6 @@ function gameReset(){
 
 
 function endGame(result){
-  console.log("resetting game");
-  console.log(result);
   
   if (result == "draw"){
     document.getElementById("end-game-text").innerHTML = "It's A Draw!";
@@ -301,11 +285,8 @@ function endGame(result){
   }
   
   document.getElementById("end-container").style.visibility = "visible";
-  //document.getElementById("end-container").style.opacity = "0";
-  //document.getElementById("end-container").style.display = "inline";
-  
   document.getElementById("ttt-game-select-container").style.display = "inline"; 
-  /*document.getElementById("end-container").style.opacity = ".5";*/
+
   gameResetTimer = setTimeout(gameReset, 1750);
 }
 
@@ -324,37 +305,36 @@ function determineWinner(markCount){
  
   if ((zoneOne==zoneTwo) && (zoneOne == zoneThree) && (zoneOne != false)){
     winningMark = zoneOne;
-    console.log("winner1 is " + winningMark);
+    //console.log("winner1 is " + winningMark);
   }else if ((zoneOne == zoneFour) && (zoneOne == zoneSeven) && (zoneOne != false)){
     winningMark = zoneOne;
-    console.log("winner2 is " + winningMark);
+    //console.log("winner2 is " + winningMark);
   }else if ((zoneOne == zoneFive) && (zoneOne == zoneNine) && (zoneOne != false)){
     winningMark = zoneOne;
-    console.log("winner3 is " + winningMark);
+    //console.log("winner3 is " + winningMark);
   }else if ((zoneTwo == zoneFive) && (zoneTwo == zoneEight) && (zoneTwo != false)){
     winningMark = zoneTwo;
-    console.log("winner4 is " + winningMark);
+    //console.log("winner4 is " + winningMark);
   }else if ((zoneThree == zoneFive) && (zoneThree == zoneSeven) && (zoneThree != false)){
     winningMark = zoneThree;
-    console.log("winner5 is " + winningMark);
+    //console.log("winner5 is " + winningMark);
   }else if ((zoneThree == zoneSix) && (zoneThree == zoneNine) && (zoneThree != false)){
     winningMark = zoneThree;
-    console.log("winner6 is " + winningMark);
+    //console.log("winner6 is " + winningMark);
   }else if ((zoneFour == zoneFive) && (zoneFour == zoneSix) && (zoneFour != false)){
     winningMark = zoneFour;
-    console.log("winner7 is " + winningMark);
+    //console.log("winner7 is " + winningMark);
   }else if ((zoneSeven == zoneEight) && (zoneSeven == zoneNine) && (zoneSeven != false)){
     winningMark = zoneSeven;
-    console.log("winner8 is " + winningMark);
+    //console.log("winner8 is " + winningMark);
   }else if (markCount == 9){
-    console.log("Its a draw: No winner");
+    //console.log("Its a draw: No winner");
     winningMark = "draw";
   }else{
-    console.log("do nothing");
+    //console.log("do nothing");
     winningMark = "";
     
     if (singlePlayer && playerTwoTurn){
-      console.log("cpu's turn!");
       tttDisableClick = true;
       cpuTimer = setTimeout(cpuMove, 1000);
     };
@@ -372,7 +352,7 @@ function determineWinner(markCount){
 }
 
 function zoneClick(zone){
-  console.log("zone: " + zone);
+  //console.log("zone: " + zone);
   
   if (zoneObjArr[zone] == false){
     if (playerOneTurn){
@@ -383,11 +363,6 @@ function zoneClick(zone){
       //add and remove class for player turn indicator
       document.getElementById("player-one-indicator").classList.remove("player-turn");
       document.getElementById("player-two-indicator").classList.add("player-turn");
-      
-      /*if (singlePlayer){
-        console.log("cpu's turn!");
-        cpuTimer = setTimeout(cpuMove, 1000);
-      };*/
       
     }else{
       if (singlePlayer){
@@ -422,7 +397,7 @@ function zoneClick(zone){
 
 
 function optionTimer(){
-  console.log("timer disabled!");
+  //console.log("timer disabled!");
   clearTimeout(gameTitleTimer);
   document.getElementById("game-title").style.visibility = "hidden";
   document.getElementById("player-select-container").style.visibility = "hidden";
@@ -430,21 +405,17 @@ function optionTimer(){
 
 function removeBegin(){
   clearTimeout(beginTimer);
-  //document.getElementById("begin-container").style.display = "none";
   document.getElementById("begin-container").style.visibility = "hidden";
   document.getElementById("begin-container").style.opacity = "0";
-  //document.getElementById("game-select-container").style.visibility = "hidden";
   document.getElementById("ttt-game-select-container").style.transform = "scale(0, 0)";
   document.getElementById("ttt-game-select-container").style.display = "none";
-  
   document.getElementById("turn-indicator-container").style.visibility = "visible";
   
 }
 
 
 function playerSelect(){
-  //document.getElementById("game-select-container").style.width = "0";
-  
+ 
   gameTitleTimer = setTimeout(optionTimer, 1000);
   document.getElementById("game-title").style.opacity = "0";  
   document.getElementById("player-select-container").style.opacity = "0";
@@ -455,13 +426,13 @@ function playerSelect(){
 }  
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-// xxxxxxxxxxxxxxxxx Jquery xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// xxxxxxxxxxx Jquery for Tic tac toe xxxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 $(document).ready(function(){
   //Select single or two player 
   $(".player-option").hover(
   function(){
     if ($("body").hasClass("HasHover")){
-        console.log("Body has hover class, allowing hover!");
         $(this).css("border", "1px solid white");
     };
   }, function(){
@@ -469,7 +440,7 @@ $(document).ready(function(){
   });
   
   $("#single-player").click(function(){
-    console.log("Single player selected!");
+    //console.log("Single player selected!");
     singlePlayer = true;
     twoPlayer = false;
     $("#player-two-indicator").text("CPU");
@@ -477,7 +448,7 @@ $(document).ready(function(){
   });
   
   $("#two-player").click(function(){
-    console.log("Two player selected");
+    //console.log("Two player selected");
     twoPlayer = true;
     singlePlayer = false;
     $("#player-two-indicator").text("P2");
@@ -492,28 +463,28 @@ $(document).ready(function(){
   
   $("#x-character").click(function(){
     playerOneMark = "X";
-    console.log("Player one is X");
+    //console.log("Player one is X");
     
     if (singlePlayer){
       cpuMark = "O";
-      console.log("Cpu is O")
+      //console.log("Cpu is O")
     }else{
       playerTwoMark = "O";
-      console.log("Player two is O");
+      //console.log("Player two is O");
     }
     
   });
   
   $("#o-character").click(function(){
     playerOneMark = "O";
-    console.log("Player one is O");
+    //console.log("Player one is O");
     
     if (singlePlayer){
       cpuMark = "X";
-      console.log("cpu is X");
+      //console.log("cpu is X");
     }else{
       playerTwoMark = "X";
-      console.log("Player two is X");
+      //console.log("Player two is X");
     }
     
   });
@@ -521,7 +492,6 @@ $(document).ready(function(){
   $(".character").click(function(){
     $("#ttt-game-select-container").css("transform", "scale(1,.2)")
     $("#character-container").css("opacity", "0");
-    //$("#begin-container").css("display", "inline");
     $("#begin-container").css("visibility", "visible");
     $("#begin-container").css("opacity", "1");
     beginTimer = setTimeout(removeBegin, 2000);
@@ -531,10 +501,10 @@ $(document).ready(function(){
  //zone clicks 
   $(".zone").click(function(){
     var tempZone = $(this).attr("id");
-    console.log(tempZone);
+    //console.log(tempZone);
     
     if (tttDisableClick){
-      console.log("click disabled");
+      //console.log("click disabled");
     }else{
       zoneClick(tempZone); 
     }
@@ -544,7 +514,10 @@ $(document).ready(function(){
   
 });
 
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 // xxxxxxxxxxxxxxxxxx JS for Simon xxxxxxxxxxxxxxxxxxxxxxx
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 var soundOne = new Audio("./sounds/simonSound1.mp3"); 
 var soundTwo = new Audio("./sounds/simonSound2.mp3");
 var soundThree = new Audio("./sounds/simonSound3.mp3"); 
@@ -552,7 +525,6 @@ var soundFour = new Audio("./sounds/simonSound4.mp3");
 var soundBuzzer = new Audio("./sounds/beep-10.mp3");
 var soundDing = new Audio("./sounds/coin.wav");
 var soundWin = new Audio ("./sounds/tada.mp3");
-
 var soundArr = [soundOne, soundTwo, soundThree, soundFour];
 
 var buttonArr = ["red-button", "blue-button", "yellow-button", "green-button"];
@@ -564,6 +536,7 @@ var simonDisableClick = true;
 var disableStart = false;
 var strictMode = false;
 var playerPatternCount = 0;
+
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 function playerClick(button){
@@ -595,11 +568,10 @@ function playerClick(button){
     //console.log("WRONG! TRY AGAIN!!");
     document.getElementById("count-text").innerHTML="!"
     soundBuzzer.play();
-    //playerPatternCount = 0;
+
     if (strictMode){
       patternArr = [];
       setTimeout(function(){setPattern();}, 1500);
-      //setPattern();
     }else{
       patternIndex = 0;
       setTimeout(function(){playPattern();}, 1500);
@@ -744,7 +716,9 @@ function startupLights(){
   }, 3750);
 }
 
-
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxx Jquery for Simon xxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 $(document).ready(function(){
   $(".SimonButton").click(function(){
     var buttonId = $(this).attr('id');
@@ -780,7 +754,7 @@ $(document).ready(function(){
       startupLights();
       setTimeout(setPattern, 4250);
     }else{
-      console.log("start is disabled!");
+      //console.log("start is disabled!");
     };
   });
   
@@ -810,27 +784,27 @@ var keycodeArray = {96: "0", 97:"1", 98:"2", 99:"3", 100:"4", 101:"5", 102:"6", 
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 function buttonClick(input){
-  console.log("input: " + input);
-  console.log(typeof input);
+  //console.log("input: " + input);
+  //console.log(typeof input);
   
 
   if (input === "AC"){
-    console.log("Clear button!");
+    //console.log("Clear button!");
     clearCalculator();
   
   //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   }else if (historyArr.length === 0){//must start with number (1-9) or decimal
     if (/[1-9]/.test(input) || input === "."){
-      console.log("input is a number or a period");
+      //console.log("input is a number or a period");
       tempNumber = input;
       historyArr.push(input);
       historyStr = historyArr.join("");
-      console.log("history Str: " + historyStr);
+      //console.log("history Str: " + historyStr);
       $("#history").append(historyStr);
-      console.log("tempnumber: " + tempNumber);
-      console.log("histArrTest: " + historyArr);
+      //console.log("tempnumber: " + tempNumber);
+      //console.log("histArrTest: " + historyArr);
     }else{
-      console.log("must start with number (1-9) or decimal to begin");
+      //console.log("must start with number (1-9) or decimal to begin");
     };
   
   //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -838,7 +812,7 @@ function buttonClick(input){
     oldResult = "";//reset old result to prevent "backspacing a result" check from interferring with backspaces
     
     if (input=== "." && /\./.test(tempNumber)){//if a decimal point has already been used, then do nothing
-      console.log("decimal already used...ignore input");
+      //console.log("decimal already used...ignore input");
     }else{
       tempNumber += input;
     
@@ -850,36 +824,36 @@ function buttonClick(input){
     };
    
     historyStr = historyArr.join("");
-    console.log(historyArr);
-    console.log("history Str: " + historyStr);
+    //console.log(historyArr);
+    //console.log("history Str: " + historyStr);
     $("#history").append(historyStr);
   
   //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   }else if (input === "="){//equals sign
     if (/\d$/.test(historyArr[historyArr.length-1])){//previous was a number and ended with a number
-      console.log("previous input was a number and will begin calculating!!!");
-      console.log("xxxxxxxx previous input: " + historyArr[historyArr.length-1]);
+      //console.log("previous input was a number and will begin calculating!!!");
+      //console.log("xxxxxxxx previous input: " + historyArr[historyArr.length-1]);
     }else if (/\.$/.test(historyArr[historyArr.length-1])){//previous input ended with a decimal
       if (historyArr.length === 1){//decimal without number and equals accidentally clicked
-        console.log("whoops equals hit with decimal"); 
+        //console.log("whoops equals hit with decimal"); 
       }else{//decimal entered in error and is removed
         historyArr[historyArr.length-1] = historyArr[historyArr.length-1].replace(/\./, "");
       };
       
     }else{//previous input was an operator
-      console.log("previous input was NOT a number or decimal and will be removed");
+      //console.log("previous input was NOT a number or decimal and will be removed");
       historyArr.pop();
     };
     
     historyStr = historyArr.join("");
-    console.log("history Str: " + historyStr);
-    console.log(historyArr);
+    //console.log("history Str: " + historyStr);
+    //console.log(historyArr);
     $("#history").append(historyStr);//appends input before calculation
     
     var result = calculate(historyArr);
     
     if (isNaN(result)){
-      console.log("result is NAN");
+      //console.log("result is NAN");
       $("#result").append("Error"); 
       historyArr = [];
       historyStr = "";
@@ -887,7 +861,7 @@ function buttonClick(input){
       result = 0;
       oldResult = "";
     }else if ((result.toString()).length > 13){
-      console.log("reached character limit!");
+      //console.log("reached character limit!");
       historyArr = [];
       historyStr = "";
       tempNumber = "";
@@ -900,46 +874,44 @@ function buttonClick(input){
       $("#result").append(result);
       historyArr = [result.toString()];
       tempNumber = "";
-      console.log("tempNumber: " + tempNumber);
+      //console.log("tempNumber: " + tempNumber);
       oldResult = result;
     };
   
   //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   }else if(input === "\u21E6"){//backspace
-    console.log("xxxxx test: ");
-    console.log(historyArr);
-    console.log("Oldresult: " + oldResult);
+    //console.log(historyArr);
+    //console.log("Oldresult: " + oldResult);
     
     if (historyArr.length === 0 || historyArr[0] == oldResult){
-      console.log("nothing to backspace!");
-      //maybe delete this?
+      //console.log("nothing to backspace!");
     }else{
-      console.log("backspacing!");
+      //console.log("backspacing!");
       var lastInput = historyArr[historyArr.length-1];
-      console.log("last input: " + lastInput);
+      //console.log("last input: " + lastInput);
       
       if (lastInput.length === 1){
-        console.log("backspacing operator or lone number/decimal");
+        //console.log("backspacing operator or lone number/decimal");
         historyArr.pop();
-        console.log(historyArr);
+        //console.log(historyArr);
         if (/\d/.test(historyArr[historyArr.length-1])){//if input before lastInput is not an operator, make continuation of tempNumber possible
-          console.log("xx crurent testt");
-          console.log(historyArr[historyArr.length-1]);
+          //console.log("xx crurent testt");
+          //console.log(historyArr[historyArr.length-1]);
           tempNumber = historyArr[historyArr.length-1];
         }else{
           tempNumber = "";
         };
         
       }else{
-        console.log("backspacing from string of numbers");
+        //console.log("backspacing from string of numbers");
         historyArr.pop();
         var backspacedInput = lastInput.substring(0, lastInput.length-1);
-        console.log(backspacedInput);
+        //console.log(backspacedInput);
         historyArr.push(backspacedInput);
         tempNumber = backspacedInput; 
       };
       
-      console.log("tempnumber: " + tempNumber);
+      //console.log("tempnumber: " + tempNumber);
       
     };
     
@@ -949,25 +921,24 @@ function buttonClick(input){
   //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   }else if (input == "%"){//percentage clicked
     oldResult = "";//reset old result to prevent "backspacing a result" check from interferring with backspaces
-    console.log("PERCENTAGE CLICKED!");
+    //console.log("PERCENTAGE CLICKED!");
     var lastInput = historyArr[historyArr.length-1];
-    console.log("lastInput: " + lastInput);
-    console.log("tempNumber: " + tempNumber);
+    //console.log("lastInput: " + lastInput);
+    //console.log("tempNumber: " + tempNumber);
     
     if (/\d/.test(lastInput) || /\./.test(lastInput)){//not an operator
-      console.log("last input has numbers or decimals and is not an operator");
+      //console.log("last input has numbers or decimals and is not an operator");
       
       if (/\.$/.test(lastInput)){//decimal at end and will be removed
-        console.log("decimal at end will be removed");
+        //console.log("decimal at end will be removed");
         
         if (lastInput.length == 1){
-          console.log("decimal is by itself");
+          //console.log("decimal is by itself");
           historyArr[historyArr.length-1] = 0;
         }else{
           var decimalRemoved = historyArr[historyArr.length-1].replace(/\.$/, "");
           historyArr[historyArr.length-1] = ((decimalRemoved * 0.01).toFixed(2)).toString();
-          //tempNumber = decimalRemoved;
-          console.log("historyArr: " + historyArr);
+          //console.log("historyArr: " + historyArr);
         };
         
       }else{
@@ -977,7 +948,7 @@ function buttonClick(input){
       };
       
     }else{//last input is an operator
-      console.log("last input is an operator, operator will be removed");
+      //console.log("last input is an operator, operator will be removed");
       historyArr.pop();
       historyArr[historyArr.length-1] = (historyArr[historyArr.length-1] *0.01).toString();
       
@@ -991,32 +962,32 @@ function buttonClick(input){
     oldResult = "";//reset old result to prevent "backspacing a result" check from interferring with backspaces
     
     if (historyArr[historyArr.length-1] === input){
-      console.log("same operator, doing nothing");
+      //console.log("same operator, doing nothing");
     }else if (/\d$/.test(historyArr[historyArr.length-1])){//previous input was a number
-      console.log("Previous input was a number and new input is an operator");
+      //console.log("Previous input was a number and new input is an operator");
       tempNumber = "";
       historyArr.push(input);
     }else if (/\.$/.test(historyArr[historyArr.length-1])){//previouss input ended in a decimal
-      console.log("previous input was a decimal");
+      //console.log("previous input was a decimal");
       
       if (/\d/.test(historyArr[historyArr.length-1])){//if decimal was a mis-click and a number is present
-        console.log("decimal was a mis-click");
+        //console.log("decimal was a mis-click");
         historyArr[historyArr.length-1] = historyArr[historyArr.length-1].replace(/\./, "");
         tempNumber = "";
         historyArr.push(input);
       }else{
-        console.log("cannot start with a decimal and operator");
+        //console.log("cannot start with a decimal and operator");
       }
       
     }else{//previous input was an operator and will be replaced with the new input
-      console.log("previous input was an operator, replacing with new input");
+      //console.log("previous input was an operator, replacing with new input");
       historyArr.pop();
       historyArr.push(input);
     };
     
     historyStr = historyArr.join("");
-    console.log(historyArr);
-    console.log("history Str: " + historyStr);
+    //console.log(historyArr);
+    //console.log("history Str: " + historyStr);
     $("#history").append(historyStr); 
   };
   
@@ -1029,11 +1000,11 @@ function calculate(inputArr){
   var tempOperator;
   $("#result").empty();
   
-  console.log("input: " + inputArr);
+  //console.log("input: " + inputArr);
   
   for (var i=0; i<inputArr.length; i+=2){
     var currentNumber = parseFloat(inputArr[i]);
-    console.log("currentNumber: " + currentNumber);
+    //console.log("currentNumber: " + currentNumber);
     
     if (i === 0){
       result = currentNumber;
@@ -1042,41 +1013,40 @@ function calculate(inputArr){
     
       switch (inputArr[i-1]){
         case "+":
-          console.log("operator is Plus sign");
+          //console.log("operator is Plus sign");
           result += currentNumber;
           break;
         case "-":
-          console.log("operator is minus sign");
+          //console.log("operator is minus sign");
           result -= currentNumber;
           break;
         case "*":
-          console.log("operator is multiplication sign");
+          //console.log("operator is multiplication sign");
           result *= currentNumber;
           break;
         case "/":
-          console.log("operator is division sign");
+          //console.log("operator is division sign");
           result /= currentNumber;
           break;
         case "%":
-          console.log("operator is percentage sign");
-          console.log("fix later do nothing");
+          //console.log("operator is percentage sign");
           break;
       };
       
     };  
     
   };
-  console.log("result: " + result);
-  console.log("result Length: " + (result.toString()).length);
+  //console.log("result: " + result);
+  //console.log("result Length: " + (result.toString()).length);
   
   if (/\./.test(result)){//if result has a decimal
-    console.log("result has a decimal");
+    //console.log("result has a decimal");
     var resultDecimal = (result.toString()).match(/\.\d+/g);
-    console.log("resultDecimal: " + resultDecimal[0]);
-    console.log("resultDecimal length: " + resultDecimal[0].length);
+    //console.log("resultDecimal: " + resultDecimal[0]);
+    //console.log("resultDecimal length: " + resultDecimal[0].length);
     
     if (resultDecimal[0].length > 3){//used to avoid extra long decimals
-      console.log("length is too long");
+      //console.log("length is too long");
       result = result.toFixed(2);
     };
   };
@@ -1096,12 +1066,15 @@ function clearCalculator(){
   oldResult = "";
   $("#result").append(result);
   
-  console.log("working");
-  console.log("historyArr: " + historyArr);
-  console.log("historyStr: " + historyStr);
-  console.log("tempNumber: " + tempNumber);
+  //console.log("working");
+  //console.log("historyArr: " + historyArr);
+  //console.log("historyStr: " + historyStr);
+  //console.log("tempNumber: " + tempNumber);
 };
 
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxx Jquery for Calculator xxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 $(document).ready(function(){
   $("#result").append(result);
@@ -1110,7 +1083,7 @@ $(document).ready(function(){
   $(".CalcButton").hover(
   function() {
     if ($("body").hasClass("HasHover")){
-        console.log("Body has hover class, allowing hover!");
+        //console.log("Body has hover class, allowing hover!");
         $( this ).addClass( "hover" );
     };
   }, function() {
@@ -1119,12 +1092,11 @@ $(document).ready(function(){
   
   $(".CalcButton").click(function(){
     if (historyStr.length <=20){
-      console.log("good");
       $("#history").empty();
       var $buttonValue = $(this).text();
       buttonClick($buttonValue);
     }else{
-      console.log("Over the limit!");
+      //console.log("Over the limit!");
       clearCalculator();
       $("#result").empty();
       $("#result").append("Error");
@@ -1135,28 +1107,15 @@ $(document).ready(function(){
   
   });
   
-  //For keyboard entry
-  /*$(document).keyup(function(e) {
-    console.log("Keystroke: " + e.keyCode);
-    
-    for (var key in keycodeArray){
-      if (e.keyCode == key){
-        console.log("keystroke is equal to: " + keycodeArray[key]);
-        $("#history").empty();
-        buttonClick(keycodeArray[key]);
-      };
-    }; 
-    
-  });*/
-
+  //xxxxxxxxxxxxxxx For keyboard entry xxxxxxxxxxxxxxxxxx
   var $shift = false;
   
   $(document).keyup(function(e) {
-    console.log("Keystroke: " + e.keyCode);
+    //console.log("Keystroke: " + e.keyCode);
     if ($calcOpen){
       if (e.keyCode == 16){
         $shift = false;
-        console.log("shift: " + $shift);
+        //console.log("shift: " + $shift);
       }else{
     
         for (var key in keycodeArray){
@@ -1164,27 +1123,27 @@ $(document).ready(function(){
             var $tempKeyStroke = "";
             switch(e.keyCode){
               case 187:
-                console.log("keystroke is equal to: +");
+                //console.log("keystroke is equal to: +");
                 $tempKeyStroke = "+";
                 break;
               case 56:
-                console.log("keystroke is equal to: *");
+                //console.log("keystroke is equal to: *");
                 $tempKeyStroke = "*";
                 break;
               case 53:
-                console.log("keystroke is equal to: %");
+                //console.log("keystroke is equal to: %");
                 $tempKeyStroke = "%";
                 break;
             };
             
-            console.log("test statement after switch");
+            //console.log("test statement after switch");
             
             if (historyStr.length <=20){
-              console.log("good");
+              //console.log("good");
               $("#history").empty();
               buttonClick($tempKeyStroke);
             }else{
-              console.log("Over the limit!");
+              //console.log("Over the limit!");
               clearCalculator();
               $("#result").empty();
               $("#result").append("Error");
@@ -1195,14 +1154,14 @@ $(document).ready(function(){
             
             
           }else if(e.keyCode == key){
-            console.log("keystroke is equal to: " + keycodeArray[key]);
+            //console.log("keystroke is equal to: " + keycodeArray[key]);
 
             if (historyStr.length <=20){
-              console.log("good");
+              //console.log("good");
               $("#history").empty();
               buttonClick(keycodeArray[key]);
             }else{
-              console.log("Over the limit!");
+              //console.log("Over the limit!");
               clearCalculator();
               $("#result").empty();
               $("#result").append("Error");
@@ -1220,9 +1179,9 @@ $(document).ready(function(){
   
   $(document).keydown(function(e){
     if (e.shiftKey && $calcOpen){
-      console.log("shift has been pressed");
+      //console.log("shift has been pressed");
       $shift = true;  
-      console.log($shift);
+      //console.log($shift);
     };
   });
   
